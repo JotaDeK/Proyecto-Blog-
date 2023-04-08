@@ -39,6 +39,17 @@
                     <a href="{% url 'post_detail' post.id%}"><h1>{{post.title}}</h1></a>
                     <p>{{post.description|striptags|truncatechars:100}}</p>
                     <p>{{post.date|date:'M d Y'|upper}}</p>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'post_like' post.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Like</button>
+                    </form>
+                {% endif %}
+
+                {% with total_likes=post.likes.count %}
+                    <p>{{ total_likes }} {{ total_likes|pluralize:"like,likes" }}</p>
+                {% endwith %}
+
 
                 </div>
             </div>

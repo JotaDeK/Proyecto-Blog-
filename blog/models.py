@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 from django.db.models.fields import CharField, DateField, URLField, TextField
 from django.db.models.fields.files import ImageField
@@ -22,10 +24,16 @@ class Post(models.Model):
     continuation_of_content = TextField(max_length=5000, null=True)
     image = ImageField(upload_to="blog/images/blog")
     date = DateField(default=date.today)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
 
     def __str__(self):
         return self.title
+
+class Like(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
-    
+    class Meta:
+        unique_together = ('post', 'user')
     
     
