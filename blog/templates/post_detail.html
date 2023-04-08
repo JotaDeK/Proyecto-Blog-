@@ -29,6 +29,11 @@
         <div class="my-4">
       
         {{post.content|safe}}
+        
+        <img src="{{post.ilustration.url}}" alt="{{post.title}}" class="img-fluid">
+
+        {{post.continuation_of_content|safe}}
+
         </div>
       </div>
   </div>

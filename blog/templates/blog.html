@@ -1,15 +1,3 @@
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Documentosss</title>
-</head>
-<body>
-    <h1>Todo funciona correctamente</h1>
-</body>
-</html> {% endcomment %}
 
 {% load static %}
 
@@ -48,11 +36,10 @@
                     </div>
                     <div class="col-9">
 
-                    <h1>{{post.title}}</h1>
+                    <a href="{% url 'post_detail' post.id%}"><h1>{{post.title}}</h1></a>
                     <p>{{post.description|striptags|truncatechars:100}}</p>
                     <p>{{post.date|date:'M d Y'|upper}}</p>
 
-                    <a href="{% url 'post_detail' post.id %}">{{post.title}}</a>
                 </div>
             </div>
         </div>
