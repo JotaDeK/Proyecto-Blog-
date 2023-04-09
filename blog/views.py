@@ -2,9 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Post, Like
+from templated_storage import utils as storage
+
+def user_logout(request):
+    logout(request)
+    return redirect('/')
 
 def register(request):
     if request.method == 'POST':
@@ -30,6 +35,7 @@ def post_detail(request, post_id):
         "total_likes": total_likes,
     }
     return render(request, "post_detail.html", context)
+
 
 @login_required
 def post_like(request, post_id):

@@ -1,0 +1,25 @@
+.like-btn {
+    border: none;
+    background-color: transparent;
+    color: gray;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .like-btn:hover {
+    color: red;
+  }
+  
+  .like-btn:active {
+    transform: scale(1.2);
+  }
+  
+  .fa-heart {
+    transition: color 0.2s, transform 0.2s;
+  }
+  
+  .fa-heart:hover {
+    color: red;
+    transform: scale(1.2);
+  }
+  

@@ -15,4 +15,5 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('register/', views.register, name="register"),
     path('post/<int:post_id>/like/', views.post_like, name='post_like'),
+    path('logout/', views.user_logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

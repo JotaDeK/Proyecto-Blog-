@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="https://kit.fontawesome.com/336be5344a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +20,8 @@
 
     {% include 'partials/navbar.html' %}
 
-    <div class="container p-4">
+    <div class="container p-4 text-dark">
+        <h1 id="test" class="text-dark">Hola esto es una prueba 123</h1>
         <h1 class="fs-2">Posts</h1>
         <h3>There are {{total_posts}} post{{total_posts|pluralize}}</h3>
 
@@ -27,22 +29,23 @@
 
         <div class="py-3">
 
-            <div class="card card-body bg-black">
+            <div class="card card-body bg-#373130">
                 <div class="row">
 
                     <div class="col-3">
-                        <img class="img-fluid" src="{{post.image.url}}" alt="{{post.title}}">
+                        <img class="img-fluid rounded" src="{{post.image.url}}" alt="{{post.title}}">
 
                     </div>
                     <div class="col-9">
 
-                    <a href="{% url 'post_detail' post.id%}"><h1>{{post.title}}</h1></a>
+                    <a class="text-decoration-none" href="{% url 'post_detail' post.id%}"><h1>{{post.title}}</h1></a>
                     <p>{{post.description|striptags|truncatechars:100}}</p>
                     <p>{{post.date|date:'M d Y'|upper}}</p>
+                    
                     {% if user.is_authenticated %}
-                    <form action="{% url 'post_like' post.id %}" method="POST">
+                    <form id="like-form" class="d-inline-block" action="{% url 'post_like' post.id %}" method="POST">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Like</button>
+                        <button type="submit" class="like-btn"><i class="fa fa-heart"></i></button>
                     </form>
                 {% endif %}
 
