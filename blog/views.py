@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Post, Like
-from templated_storage import utils as storage
+
 
 def user_logout(request):
     logout(request)
@@ -45,7 +45,6 @@ def post_like(request, post_id):
         return HttpResponseRedirect(reverse('post_detail', args=[str(post.id)]))
     else:
         return HttpResponseRedirect(reverse('post_detail', args=[str(post.id)]))
-
 
 
 

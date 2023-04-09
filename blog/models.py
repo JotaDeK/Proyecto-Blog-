@@ -18,10 +18,12 @@ class Project(models.Model):
     
 class Post(models.Model):
     title = CharField(max_length=100)
-    description = CharField(max_length=300)
-    content = TextField(max_length=5000, null=True)
+    description = CharField(max_length=1000)
+    content = TextField(max_length=6000, null=True)
     ilustration = ImageField(upload_to="blog/images/blog", null=True)
-    continuation_of_content = TextField(max_length=5000, null=True)
+    continuation_of_content = TextField(max_length=6000, null=True)
+    ilustration_2 = ImageField(upload_to="blog/images/blog", null=True)
+    end_of_content = TextField(max_length=6000, null=True)
     image = ImageField(upload_to="blog/images/blog")
     date = DateField(default=date.today)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)

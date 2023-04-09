@@ -21,7 +21,8 @@
     <div class="text-center">
 
         <h1>{{post.title}}</h1>
-        <h2 class="my-2 h5 text-muted">{{post.date|date:'F jS Y'}}</h2>
+        <h2 class="my-2 h5 text-muted"><p>{{post.date|date:'M d Y'|upper}}</p></h2>
+        <h2 class="my-2 h5 text-muted"><p>{{ total_likes }} {{ total_likes|pluralize:"Like,Likes" }}</p></h2>
       
         <img src="{{post.image.url}}" alt="{{post.title}}" class="img-fluid">
       
@@ -33,6 +34,10 @@
         <img src="{{post.ilustration.url}}" alt="{{post.title}}" class="img-fluid">
 
         {{post.continuation_of_content|safe}}
+
+        <img src="{{post.ilustration_2.url}}" alt="{{post.title}}" class="img-fluid">
+
+        {{post.end_of_content|safe}}
 
         </div>
       </div>
