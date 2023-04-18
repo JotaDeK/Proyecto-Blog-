@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout
@@ -25,7 +26,8 @@ def register(request):
 def renderPosts(request):
     total_posts = Post.objects.count()
     posts = Post.objects.order_by("-date")
-    return render (request, "blog.html", {"posts": posts, "total_posts": total_posts})
+    popular_posts = set(Post.objects.annotate(num_likes=Count('likes')).order_by('-num_likes')[:5])
+    return render (request, "blog.html", {"posts": posts, "total_posts": total_posts, "popular_posts": popular_posts })
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)

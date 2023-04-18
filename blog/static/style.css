@@ -28,4 +28,7 @@ a {
     transform: scale(1.2);
   }
   
+  #popular-posts-carousel.carousel {
+    height: 500px;
+  }
   
